@@ -1,0 +1,10 @@
+{
+    "python.linting.enabled": true,
+    "python.linting.pylamaEnabled": true,
+    "python.linting.pylamaArgs": [
+        "--options",
+        "${workspaceFolder}/pylama.ini",
+        "--ignore",
+        "E0401"
+    ]
+}
