@@ -44,3 +44,4 @@ You'll probably be unfamilar with much of the project to begin with. That's okay
 able to learn about a project's technology stack by referring to the documentation or guides. Here are a few for this project:
 
 - [A Newbie Guide to pygame](https://www.pygame.org/docs/tut/newbieguide.html)
+- [Pygame Docs](https://www.pygame.org/docs/)
