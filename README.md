@@ -38,6 +38,14 @@ Install the libraries that Flappy Ducks depends on:
 pip install -r requirements.txt
 ```
 
+## Running
+
+In the root directory of the project, run:
+
+```bash
+./src/app.py
+```
+
 ## Guides
 
 You'll probably be unfamilar with much of the project to begin with. That's okay! An important part of software engineering is being
@@ -45,3 +53,5 @@ able to learn about a project's technology stack by referring to the documentati
 
 - [A Newbie Guide to pygame](https://www.pygame.org/docs/tut/newbieguide.html)
 - [Pygame Docs](https://www.pygame.org/docs/)
+
+Another great way to learn how to develop software is to read code! Try to go into this project and trace the program execution in your head. You'll find that you better understand what needs to be changed in order to implement a feature or fix a bug after doing so.
