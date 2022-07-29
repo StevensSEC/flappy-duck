@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from models.event_loop import event_loop
+from controllers.event_loop import event_loop
 
 # Python main function. This is the entrypoint to the app
 if __name__ == "__main__":
