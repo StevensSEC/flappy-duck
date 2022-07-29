@@ -8,6 +8,7 @@ from models.window import Window
 
 
 def event_loop() -> None:
+    """The main GUI event loop. Handles events then draws the screen. Loops until the user exits."""
     print("Entering main game loop")
     pygame.init()
 

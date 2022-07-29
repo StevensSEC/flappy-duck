@@ -18,6 +18,8 @@ class Window:
 
     def __init__(self):
         """Create a Window."""
+        # Set the window size to be some fraction of the screen if we can get the screen size. If not,
+        # set it to some arbitrary default size
         info = display.Info()
         self._width = info.current_w * MARGIN_FACTOR if info.current_w != INFO_ERROR else DEFAULT_WIDTH
         self._height = info.current_h * MARGIN_FACTOR if info.current_h != INFO_ERROR else DEFAULT_HEIGHT
@@ -35,7 +37,9 @@ class Window:
                 entity.handle_window_border_x()
             if entity.get_top() <= 0 or entity.get_bottom() >= self._height:
                 entity.handle_window_border_y()
+            # blit means to actually draw the entity onto the screen
             self._window_surface.blit(entity.get_surface(), entity.get_rect())
+        # flip redraws the window
         display.flip()
 
     def register_entity(self, entity: Entity):

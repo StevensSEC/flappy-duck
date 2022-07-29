@@ -13,6 +13,7 @@ class Player(Entity):
         self._player_image = image.load("assets/ball.gif")
         self._player_rect = self._player_image.get_rect()
 
+        # ensure that the speed is a 2D vector before setting it
         if len(speed) != 2:
             raise RuntimeError(f"Invalid speed. Expected list of length 2, got length {len(speed)}")
         self.speed = speed
@@ -46,7 +47,11 @@ class Player(Entity):
         self.speed[1] = -self.speed[1]
 
     def get_surface(self):
-        return self._player_image
+        """Returns the internal Surface for the player."""
+        # return a copy here because `self._player_image` is a private field
+        # private field means that another part of the program should not be able to modify it
+        return self._player_image.copy()
 
     def get_rect(self):
-        return self._player_rect
+        """Returns the internal Rect for the player."""
+        return self._player_rect.copy()
