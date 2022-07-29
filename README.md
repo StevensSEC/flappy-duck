@@ -30,7 +30,7 @@ which python
 ```
 
 If you get a result such as `<HOME_DIRECTORY>/flappy-ducks/venv/bin/python`, then you know that it worked correctly. (Replace
-<HOME_DIRECTORY> swith the actual value of your home directory.)
+<HOME_DIRECTORY> with the actual value of your home directory.)
 
 Install the libraries that Flappy Ducks depends on:
 
