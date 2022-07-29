@@ -18,6 +18,8 @@ class Window:
 
     def __init__(self):
         """Create a Window."""
+        # initialize the display module if it hasn't been already
+        display.init()
         # Set the window size to be some fraction of the screen if we can get the screen size. If not,
         # set it to some arbitrary default size
         info = display.Info()
