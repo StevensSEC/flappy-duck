@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-source "scripts/common/activate-virtualenv.sh"
+./scripts/common/check-venv.sh || exit 1
+
 src_dir="./src"
 test_dir="./tests/unit-tests"
 
