@@ -3,12 +3,15 @@ A Flappy Bird clone built using pygame.
 
 ## Prerequisites
 
-- [WSL 2 (if on Windows)](https://docs.microsoft.com/en-us/windows/wsl/install)
-- [Git](https://git-scm.com/)
-- [Python 3.10](https://www.python.org/downloads/)
 - [Visual Studio Code](https://code.visualstudio.com/)
+- [WSL 2 (if on Windows)](https://softe.club/tutorial/install-wsl)
+- Git*
+- [GitHub CLI](https://github.com/StevensSEC/flappy-duck/wiki/Installing-GitHub-CLI)
+- [Python 3.10](https://github.com/StevensSEC/flappy-duck/wiki/Installing-Python-3.10)
 
 (Note: if using on Windows and using WSL, you'll be installing most of these things *onto* WSL rather than your host machine. The only exception is Visual Studio Code.)
+
+*Git comes installed on WSL by default. To install on Mac OS, run `brew install git`.
 
 ## Environment Setup
 
