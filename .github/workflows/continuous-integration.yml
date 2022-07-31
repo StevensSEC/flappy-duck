@@ -1,0 +1,41 @@
+# name of this workflow
+name: Continuous Integration
+
+# when the workflow is triggered. this workflow is triggered whenever a pull request is opened
+# or edited
+on: [pull_request]
+
+# what to do as part of the workflow
+jobs:
+  # this job is called "build"
+  build:
+    # what OS image to run the pipeline on
+    runs-on: ubuntu-latest
+    # define environment variables for the pipeline
+    env:
+      # "CI" is an environment variable often set during automation
+      CI: true
+    # a strategy allows you to use a matrix to define variables to run a job for each in
+    strategy:
+      matrix:
+        # flappy-duck only supports 3.10 at the moment. If we wanted to support a different python
+        # version, we could add it here to have tests run for it too
+        python-version: ["3.10"]
+    steps:
+      # a `uses` step defines another action to use from a public repository.
+      # here, we use the "checkout" action, which checks out our repository.
+      # read more about it here: https://github.com/actions/checkout
+      - uses: actions/checkout@v3
+      - name: Set up Python ${{ matrix.python-version }}
+        # see: https://github.com/actions/setup-python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install dependencies
+        run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+      - name: Lint with pylama
+        run: ./scripts/run-linters.sh
+      - name: Run unit tests
+        run: ./scripts/run-unit-tests.sh
