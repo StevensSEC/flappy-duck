@@ -6,7 +6,19 @@
         {
             "label": "Run flappy-duck",
             "type": "shell",
-            "command": "source ./venv/bin/activate && ./src/app.py",
+            "command": "./scripts/common/activate-virtualenv.sh && pip install -r requirements.txt && ./src/app.py",
+            "problemMatcher": []
+        },
+        {
+            "label": "Run linters",
+            "type": "shell",
+            "command": "./scripts/common/activate-virtualenv.sh && pip install -r requirements.txt && ./scripts/run-linters.sh",
+            "problemMatcher": []
+        },
+        {
+            "label": "Run unit tests",
+            "type": "shell",
+            "command": "./scripts/common/activate-virtualenv.sh && pip install -r requirements.txt && ./scripts/run-unit-tests.sh",
             "problemMatcher": []
         }
     ]

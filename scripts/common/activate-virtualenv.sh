@@ -4,12 +4,12 @@
 if [ -z "$VIRTUAL_ENV" ]; then
   venv_dir="${PWD}/venv"
   # if a virtual environment folder does not exist
-  if [! -d "$venv_dir "]; then
-    echo "Virtual environment does not exist. Creating in \"{venv_dir}\"..."
+  if [ ! -d "$venv_dir " ]; then
+    echo "Virtual environment does not exist. Creating in \"$venv_dir\"..."
     {
       python3.10 -m venv "$venv_dir"
     } || {
-      python -m venv "$venv_dir"
+      python3 -m venv "$venv_dir"
     } || exit 1
   fi
 
