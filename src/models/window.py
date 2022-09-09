@@ -35,8 +35,11 @@ class Window:
 
     def update(self):
         """Updates the contents of the entire window."""
+        # tick the clock to ensure that the game runs at the target FPS
+        delta_time = self._clock.tick(TARGET_FPS) / 16.666666666666668
         for entity in self._entities:
-            entity.move()
+            # any motion should be multiplied by delta_time to ensure it isn't affected by framerate
+            entity.move(delta_time)
             if entity.get_left() <= 0 or entity.get_right() >= self._width:
                 entity.handle_window_border_x()
             if entity.get_top() <= 0 or entity.get_bottom() >= self._height:
@@ -45,8 +48,6 @@ class Window:
             self._window_surface.blit(entity.get_surface(), entity.get_rect())
         # flip redraws the window
         display.flip()
-        # tick the clock to ensure that the game runs at the target FPS
-        self._clock.tick(TARGET_FPS)
 
     def register_entity(self, entity: Entity):
         """Register a new entity to be managed by the window."""

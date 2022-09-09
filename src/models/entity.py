@@ -7,7 +7,7 @@ class Entity(metaclass=abc.ABCMeta):
     """Interface for any entity that can be managed by the window (i.e. a projectile, the player, etc."""
 
     @abc.abstractmethod
-    def move(self) -> None:
+    def move(self, delta_time) -> None:
         """Move the entity across the window."""
         raise NotImplementedError
 
