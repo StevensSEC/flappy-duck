@@ -18,7 +18,7 @@ class Player(Entity):
             raise RuntimeError(f"Invalid speed. Expected list of length 2, got length {len(speed)}")
         self.speed = speed
 
-    def move(self, delta_time):
+    def move(self, delta_time=1):
         """Moves the player according to their current speed."""
         self._player_rect = self._player_rect.move(self.speed[0] * delta_time, self.speed[1] * delta_time)
 
