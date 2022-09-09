@@ -1,12 +1,13 @@
 from typing import List
 
-from pygame import Color, Surface, display
+from pygame import Color, Surface, display, time
 
 from models.entity import Entity
 
 DEFAULT_HEIGHT = 300
 DEFAULT_WIDTH  = 420
 MARGIN_FACTOR  = 0.9
+TARGET_FPS = 60
 
 INFO_ERROR = -1
 
@@ -15,6 +16,7 @@ class Window:
     """Represents the entire window that the game is rendered in."""
     _window_surface: Surface = None
     _entities: List[Entity] = []
+    _clock: time.Clock = time.Clock()
 
     def __init__(self):
         """Create a Window."""
@@ -43,6 +45,8 @@ class Window:
             self._window_surface.blit(entity.get_surface(), entity.get_rect())
         # flip redraws the window
         display.flip()
+        # tick the clock to ensure that the game runs at the target FPS
+        self._clock.tick(TARGET_FPS)
 
     def register_entity(self, entity: Entity):
         """Register a new entity to be managed by the window."""
