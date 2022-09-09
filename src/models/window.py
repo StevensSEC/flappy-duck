@@ -36,7 +36,7 @@ class Window:
     def update(self):
         """Updates the contents of the entire window."""
         # tick the clock to ensure that the game runs at the target FPS
-        delta_time = self._clock.tick(TARGET_FPS) / 16.666666666666668
+        delta_time = self._clock.tick(TARGET_FPS) / 1000
         for entity in self._entities:
             # any motion should be multiplied by delta_time to ensure it isn't affected by framerate
             entity.move(delta_time)

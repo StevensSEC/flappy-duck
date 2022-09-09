@@ -14,7 +14,7 @@ def event_loop() -> None:
 
     window = Window()
 
-    player = Player([2, 2])
+    player = Player([200, 200])
     window.register_entity(player)
 
     # Event loop: a loop that checks if new events have occurred and responds to them if they have
