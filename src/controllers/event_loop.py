@@ -1,5 +1,6 @@
 import sys
 
+import time
 import pygame
 from pygame import event
 
@@ -17,6 +18,9 @@ def event_loop() -> None:
     player = Player([2, 2])
     window.register_entity(player)
 
+    targetFPS = 15
+    currentTime, deltaTime, lastFrameTime = 0, 0, 0
+
     # Event loop: a loop that checks if new events have occurred and responds to them if they have
     while True:
         # check all the events sent from pygame
@@ -27,5 +31,15 @@ def event_loop() -> None:
                 sys.exit()
 
         # handle the window
+
+        #Take time/delta
+        currentTime = time.time()
+        deltaTime = currentTime - lastFrameTime
+        lastFrameTime = currentTime
+
+        sleepTime = 1 / targetFPS - deltaTime
+        if(sleepTime > 0):
+            time.sleep(sleepTime)
+
         window.clear()
         window.update()
