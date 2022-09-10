@@ -1,12 +1,13 @@
 from typing import List
 
-from pygame import Color, Surface, display
+from pygame import Color, Surface, display, time
 
 from models.entity import Entity
 
 DEFAULT_HEIGHT = 300
 DEFAULT_WIDTH  = 420
 MARGIN_FACTOR  = 0.9
+TARGET_FPS = 60
 
 INFO_ERROR = -1
 
@@ -15,6 +16,7 @@ class Window:
     """Represents the entire window that the game is rendered in."""
     _window_surface: Surface = None
     _entities: List[Entity] = []
+    _clock: time.Clock = time.Clock()
 
     def __init__(self):
         """Create a Window."""
@@ -33,8 +35,11 @@ class Window:
 
     def update(self):
         """Updates the contents of the entire window."""
+        # tick the clock to ensure that the game runs at the target FPS
+        delta_time = self._clock.tick(TARGET_FPS) / 1000
         for entity in self._entities:
-            entity.move()
+            # any motion should be multiplied by delta_time to ensure it isn't affected by framerate
+            entity.move(delta_time)
             if entity.get_left() <= 0 or entity.get_right() >= self._width:
                 entity.handle_window_border_x()
             if entity.get_top() <= 0 or entity.get_bottom() >= self._height:
