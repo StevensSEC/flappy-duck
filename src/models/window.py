@@ -27,7 +27,7 @@ class Window:
         info = display.Info()
         self._width = info.current_w * MARGIN_FACTOR if info.current_w != INFO_ERROR else DEFAULT_WIDTH
         self._height = info.current_h * MARGIN_FACTOR if info.current_h != INFO_ERROR else DEFAULT_HEIGHT
-        self._window_surface = display.set_mode((self._width, self._height))
+        self._window_surface = display.set_mode((int(self._width), int(self._height)))
 
     def clear(self):
         """Clear all elements currently drawn to the window."""
@@ -52,3 +52,11 @@ class Window:
     def register_entity(self, entity: Entity):
         """Register a new entity to be managed by the window."""
         self._entities.append(entity)
+
+    @property
+    def width(self):
+        return self._width
+
+    @property
+    def height(self):
+        return self._height
