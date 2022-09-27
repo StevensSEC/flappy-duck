@@ -24,7 +24,7 @@ python3.10 -m venv venv
 Once your virtual environment has been created, you will need to activate it:
 
 ```bash
-source /venv/bin/activate
+source venv/bin/activate
 ```
 
 You can ensure that it worked by running `which`:
