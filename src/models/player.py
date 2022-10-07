@@ -1,5 +1,3 @@
-from typing import List
-
 from pygame import image
 
 from models.entity import Entity
@@ -20,7 +18,7 @@ class Player(Entity):
     def move(self, delta_time=1):
         """Moves the player according to their current speed."""
         self.y_velo += self.gravity * delta_time
-        
+
         self._player_rect = self._player_rect.move(0, self.y_velo * delta_time)
 
     def get_left(self):
@@ -41,12 +39,10 @@ class Player(Entity):
 
     def handle_window_border_x(self):
         """Handles the behavior of the player's image if they reach the x-borders of the window."""
-        #self.speed[0] = -self.speed[0]
         pass
 
     def handle_window_border_y(self):
         """Handles the behavior of the player's image if they reach the y-borders of the window."""
-        #self.speed[1] = -self.speed[1]
         pass
 
     def get_surface(self):
