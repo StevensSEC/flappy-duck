@@ -49,7 +49,8 @@ class Window:
             self._window_surface.blit(entity.get_surface(), entity.get_rect())
         # flip redraws the window
         display.flip()
-        self._frame_counter += 1 # every update is a new frame
+        # every update is a new frame
+        self._frame_counter += 1
 
     def register_entity(self, entity: Entity):
         """Register a new entity to be managed by the window."""

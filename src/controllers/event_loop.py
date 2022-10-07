@@ -16,7 +16,7 @@ def event_loop() -> None:
 
     player = Player(0, window.width / 2 * .75)
     window.register_entity(player)
-    
+
     has_clicked = False
 
     # Event loop: a loop that checks if new events have occurred and responds to them if they have
