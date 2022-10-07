@@ -14,7 +14,23 @@ class Player(Entity):
 
         self.gravity = gravity
         self.y_velo = 0
-
+        self.local_frame_count = 0 # only updated every click to determine the amount of frames that happened in between the last jump and this jump.
+        self.jump_timer = 0 # counts down from (n) frames to 0 
+        
+    def jump(self, frameCounter):
+        frame_diff = frameCounter - self.local_frame_count
+        self.local_frame_count = frameCounter
+        self.jump_timer = max(self.jump_timer - frame_diff, 0) # set the jump timer to 0 if negative so number doesn't underflow after a long time
+        if self.jump_timer > 0:
+            print(self.jump_timer)
+            self.jump_timer -= 1
+            return
+        else:
+            print(self.jump_timer)
+            self.jump_timer = 20 # (n) frames
+            self.y_velo = -650
+            return
+            
     def move(self, delta_time=1):
         """Moves the player according to their current speed."""
         self.y_velo += self.gravity * delta_time

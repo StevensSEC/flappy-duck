@@ -1,6 +1,6 @@
 from typing import List
 
-from pygame import Color, Surface, display, time
+from pygame import Color, Surface, display, time, mouse
 
 from models.entity import Entity
 
@@ -28,6 +28,7 @@ class Window:
         self._width = info.current_w * MARGIN_FACTOR if info.current_w != INFO_ERROR else DEFAULT_WIDTH
         self._height = info.current_h * MARGIN_FACTOR if info.current_h != INFO_ERROR else DEFAULT_HEIGHT
         self._window_surface = display.set_mode((int(self._width), int(self._height)))
+        self._frame_counter = 0
 
     def clear(self):
         """Clear all elements currently drawn to the window."""
@@ -48,6 +49,7 @@ class Window:
             self._window_surface.blit(entity.get_surface(), entity.get_rect())
         # flip redraws the window
         display.flip()
+        self._frame_counter += 1 # every update is a new frame
 
     def register_entity(self, entity: Entity):
         """Register a new entity to be managed by the window."""

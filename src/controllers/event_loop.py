@@ -14,8 +14,10 @@ def event_loop() -> None:
 
     window = Window()
 
-    player = Player(1000, window.width / 2 * .75)
+    player = Player(0, window.width / 2 * .75)
     window.register_entity(player)
+    
+    has_clicked = False
 
     # Event loop: a loop that checks if new events have occurred and responds to them if they have
     while True:
@@ -25,6 +27,15 @@ def event_loop() -> None:
             if _event.type == pygame.QUIT:
                 print("Found QUIT event")
                 sys.exit()
+            elif _event.type == pygame.MOUSEBUTTONDOWN:
+                if not has_clicked:
+                    # TODO: Add a start menu, don't just leave gravity at 0 until the first click.
+                    window.clear()
+                    window.update()
+                    player.gravity = 1500
+                    has_clicked = True
+                else:
+                    player.jump(window._frame_counter)
 
         # handle the window
         window.clear()
