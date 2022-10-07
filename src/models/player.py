@@ -1,5 +1,3 @@
-from typing import List
-
 from pygame import image
 
 from models.entity import Entity
@@ -8,19 +6,20 @@ from models.entity import Entity
 class Player(Entity):
     """Represents the player."""
 
-    def __init__(self, speed: List[int]):
+    def __init__(self, gravity: int, x_pos: int):
         """Create a new Player."""
         self._player_image = image.load("assets/ball.gif")
         self._player_rect = self._player_image.get_rect()
+        self._player_rect = self._player_rect.move(x_pos, 0)
 
-        # ensure that the speed is a 2D vector before setting it
-        if len(speed) != 2:
-            raise RuntimeError(f"Invalid speed. Expected list of length 2, got length {len(speed)}")
-        self.speed = speed
+        self.gravity = gravity
+        self.y_velo = 0
 
     def move(self, delta_time=1):
         """Moves the player according to their current speed."""
-        self._player_rect = self._player_rect.move(self.speed[0] * delta_time, self.speed[1] * delta_time)
+        self.y_velo += self.gravity * delta_time
+
+        self._player_rect = self._player_rect.move(0, self.y_velo * delta_time)
 
     def get_left(self):
         """Returns the player's left-most position."""
@@ -40,11 +39,11 @@ class Player(Entity):
 
     def handle_window_border_x(self):
         """Handles the behavior of the player's image if they reach the x-borders of the window."""
-        self.speed[0] = -self.speed[0]
+        pass
 
     def handle_window_border_y(self):
         """Handles the behavior of the player's image if they reach the y-borders of the window."""
-        self.speed[1] = -self.speed[1]
+        pass
 
     def get_surface(self):
         """Returns the internal Surface for the player."""
