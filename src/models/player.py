@@ -22,11 +22,11 @@ class Player(Entity):
         self.local_frame_count = frameCounter
         self.jump_timer = max(self.jump_timer - frame_diff, 0) # set the jump timer to 0 if negative so number doesn't underflow after a long time
         if self.jump_timer > 0:
-            print(self.jump_timer)
+            # print(self.jump_timer)
             self.jump_timer -= 1
             return
         else:
-            print(self.jump_timer)
+            # print(self.jump_timer)
             self.jump_timer = 20 # (n) frames
             self.y_velo = -650
             return

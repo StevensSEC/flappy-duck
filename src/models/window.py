@@ -1,6 +1,6 @@
 from typing import List
 
-from pygame import Color, Surface, display, time, mouse
+from pygame import Color, Surface, display, time
 
 from models.entity import Entity
 
