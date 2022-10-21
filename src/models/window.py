@@ -1,6 +1,6 @@
 from typing import List
 
-from pygame import Color, Surface, display, time
+from pygame import Color, Surface, display, time, image
 
 from models.entity import Entity
 
@@ -35,6 +35,9 @@ class Window:
         self._window_surface = display.set_mode(
             (int(self._width), int(self._height)))
         self._frame_counter = 0
+        self._background = Background(image.load("assets/background.png"))
+        self._background.set_size(self._width, self._height)
+        self._background.set_window_surface(self._window_surface)
 
     def clear(self):
         """Clear all elements currently drawn to the window."""
@@ -44,6 +47,7 @@ class Window:
         """Updates the contents of the entire window."""
         # tick the clock to ensure that the game runs at the target FPS
         delta_time = self._clock.tick(TARGET_FPS) / 1000
+        self._background.draw()
         for entity in self._entities:
             # any motion should be multiplied by delta_time to ensure it isn't affected by framerate
             entity.move(delta_time)
