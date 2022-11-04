@@ -1,6 +1,9 @@
-from pygame import image
+from pygame import image, transform
 
 from models.entity import Entity
+
+# TODO: Find better player size
+PLAYER_SIZE = (192, 192)
 
 
 class Player(Entity):
@@ -8,7 +11,8 @@ class Player(Entity):
 
     def __init__(self, gravity: int, x_pos: int):
         """Create a new Player."""
-        self._player_image = image.load("assets/ball.gif")
+        self._player_image = transform.scale(
+            image.load("assets/duck.png"), PLAYER_SIZE)
         self._player_rect = self._player_image.get_rect()
         self._player_rect = self._player_rect.move(x_pos, 0)
 
