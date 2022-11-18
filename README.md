@@ -1,8 +1,6 @@
 # flappy-duck
 A Flappy Bird clone built using pygame.
 
-TEST CHANGE
-
 ## Prerequisites
 
 - [Visual Studio Code](https://code.visualstudio.com/)
