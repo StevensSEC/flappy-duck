@@ -40,18 +40,6 @@ class Player(Entity):
 
         self.y_velo = self.jump_power
         return
-        # set the jump timer to 0 if negative so number doesn't underflow after a long time
-        # self.jump_timer = max(self.jump_timer - frame_diff, 0)
-        # if self.jump_timer > 0:
-        #     # print(self.jump_timer)
-        #     self.jump_timer -= 1
-        #     return
-        # else:
-        #     # print(self.jump_timer)
-        #     # (n = 20) frames
-        #     self.jump_timer = 20
-        #     self.y_velo = self.jump_power
-        #     return
 
     def move(self, delta_time=1):
         """Moves the player according to their current speed."""
