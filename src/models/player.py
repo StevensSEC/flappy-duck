@@ -19,26 +19,39 @@ class Player(Entity):
         self.gravity = gravity
         self.y_velo = 0
 
+        # jump decay is the percentage of the jump power that remains if player clicks within 20 frames
+        self.jump_decay = 0.95
+        self.normal_jump_power = -650
+        self.jump_power = self.normal_jump_power
+
         # only updated every click to determine number of frames between the last jump and this jump.
         self.local_frame_count = 0
         # counts down from (n) frames to 0
-        self.jump_timer = 0
+        # self.jump_timer = 0
 
     def jump(self, frameCounter):
         frame_diff = frameCounter - self.local_frame_count
         self.local_frame_count = frameCounter
-        # set the jump timer to 0 if negative so number doesn't underflow after a long time
-        self.jump_timer = max(self.jump_timer - frame_diff, 0)
-        if self.jump_timer > 0:
-            # print(self.jump_timer)
-            self.jump_timer -= 1
-            return
+
+        if frame_diff <= 20:
+            self.jump_power *= self.jump_decay
         else:
-            # print(self.jump_timer)
-            # (n = 20) frames
-            self.jump_timer = 20
-            self.y_velo = -650
-            return
+            self.jump_power = self.normal_jump_power
+
+        self.y_velo = self.jump_power
+        return
+        # set the jump timer to 0 if negative so number doesn't underflow after a long time
+        # self.jump_timer = max(self.jump_timer - frame_diff, 0)
+        # if self.jump_timer > 0:
+        #     # print(self.jump_timer)
+        #     self.jump_timer -= 1
+        #     return
+        # else:
+        #     # print(self.jump_timer)
+        #     # (n = 20) frames
+        #     self.jump_timer = 20
+        #     self.y_velo = self.jump_power
+        #     return
 
     def move(self, delta_time=1):
         """Moves the player according to their current speed."""
