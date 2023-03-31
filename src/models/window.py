@@ -66,6 +66,13 @@ class Window:
         """Register a new entity to be managed by the window."""
         self._entities.append(entity)
 
+    def unregister_entity(self, entity: Entity):
+        """Remove an entity from the the window."""
+        try:
+            self._entities.remove(entity)
+        except:
+            print("Attempting to remove entity " + entity + " that is not being managed")
+
     def set_background(self, image: Surface):
         self._background = Background(image)
         self._background.set_size(self._width, self._height)
